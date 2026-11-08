@@ -1,8 +1,16 @@
-<h1 align="center"> WiVRn </h1>
+<h1 align="center"> WiVRn (Eidenz/Monado hotplug fork) </h1>
+
+> **This is a fork of [WiVRn/WiVRn](https://github.com/WiVRn/WiVRn)** that builds against [Eidenz/Monado](https://github.com/Eidenz/Monado) instead of upstream Monado.
+>
+> The Eidenz fork adds **device hotplug** for the SteamVR Lighthouse driver (controllers and trackers appear after power-on without restarting the runtime) and **UDCAP gloves** support, plus extras such as in-headset screenshots and controller freeze.
+>
+> - Monado source: `https://github.com/Eidenz/Monado.git`
+> - Pinned revision: see [`monado-rev`](monado-rev)
+> - WiVRn’s existing Monado patches under `patches/monado/` are still applied. If a build fails at the patch step, you may need to rebase or drop individual patches against the fork.
 
 <div align="center">
   
-[![License: GPL v3](images/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![CI](https://github.com/WiVRn/WiVRn/workflows/Build/badge.svg) ![Format](https://github.com/WiVRn/WiVRn/workflows/Format/badge.svg)
+[![License: GPL v3](images/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
   
 </div>
 <p align="center"><img src="images/wivrn.svg" width="180"></p>
@@ -135,6 +143,7 @@ The same overrides should work for other VR applications distributed as Flatpaks
 
 See [building](docs/building.md) for building the [dashboard](docs/building.md#dashboard), [server (PC)](docs/building.md#server-pc), and [client (headset)](docs/building.md#client-headset)
 
+**Note for this fork:** When configuring, Monado is fetched from Eidenz/Monado. Ensure `WIVRN_FEATURE_STEAMVR_LIGHTHOUSE=ON` if you want the hotplug lighthouse support.
 
 # Configuration
 Most settings are controlled through the headset app, while the server has configuration for items that are specific to the server. Use the dashboard to edit the latter, or see [configuration](docs/configuration.md) for editing it manually.
@@ -220,7 +229,7 @@ WiVRn uses the following software:
 - [glm](http://glm.g-truc.net/)
 - [HarfBuzz](https://harfbuzz.github.io/)
 - [librsvg](https://wiki.gnome.org/Projects/LibRsvg)
-- [Monado](https://monado.freedesktop.org/)
+- [Monado](https://monado.freedesktop.org/) (this fork uses [Eidenz/Monado](https://github.com/Eidenz/Monado))
 - [nvenc](https://developer.nvidia.com/nvidia-video-codec-sdk) optional, for hardware encoding on NVIDIA
 - [qCoro](https://qcoro.dev/)
 - [Qt 6](https://www.qt.io/) optional, for the dashboard
