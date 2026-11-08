@@ -281,8 +281,10 @@ file(GLOB MONADO_PATCHES CONFIGURE_DEPENDS patches/monado/*)
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS monado-rev)
 file(STRINGS monado-rev MONADO_REV)
 # Server dependencies
+# Using Eidenz/Monado fork for device hotplug (SteamVR Lighthouse controllers/trackers)
+# and UDCAP gloves support. See https://github.com/Eidenz/Monado
 FetchContent_Declare(monado
-    GIT_REPOSITORY   https://gitlab.freedesktop.org/monado/monado.git
+    GIT_REPOSITORY   https://github.com/Eidenz/Monado.git
     # The flatpak manifest is updated automatically
     GIT_TAG          ${MONADO_REV}
     PATCH_COMMAND    ${CMAKE_CURRENT_LIST_DIR}/patches/apply.sh ${MONADO_PATCHES}
