@@ -65,13 +65,14 @@
                 monado = pkgs.applyPatches {
                   inherit (oldAttrs.monado) patches postPatch;
                   # Force a refetch when the monado rev changes.
-                  src = pkgs.testers.invalidateFetcherByDrvHash pkgs.fetchFromGitLab {
-                    inherit (oldAttrs.monado.src) owner repo;
-                    domain = "gitlab.freedesktop.org";
+                  # Using Eidenz/Monado fork (hotplug + udcap) instead of upstream gitlab.freedesktop.org/monado/monado
+                  src = pkgs.testers.invalidateFetcherByDrvHash pkgs.fetchFromGitHub {
+                    owner = "Eidenz";
+                    repo = "Monado";
                     # Keep in sync with CMakeLists.txt monado rev
                     rev = lib.strings.trim (builtins.readFile ./monado-rev);
                     # Nix will output the correct hash when it doesn't match
-                    hash = "sha256-yGkuD2jAG/ACSGkH1Cz8o23wHLtEqtNCUe2kS5OyC68=";
+                    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
                   };
                 };
 
